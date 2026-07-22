@@ -2,14 +2,11 @@ resource "aws_s3_bucket" "tfstate_state" {
   region = var.aws_region
   bucket = "opensgf-infra-tf-state"
 
-  tags = merge(
-    var.tags,
-    {
-      Name        = "opensgf-infra-tf-state"
-      Environment = "global"
-      ManagedBy   = "OpenTofu"
-    }
-  )
+  tags = {
+    Name        = "opensgf-infra-tf-state"
+    Environment = "global"
+    ManagedBy   = "OpenTofu"
+  }
 }
 
 resource "aws_s3_bucket_versioning" "tfstate_state" {
@@ -62,14 +59,11 @@ resource "aws_dynamodb_table" "tflock_state" {
     type = "S"
   }
 
-  tags = merge(
-    var.tags,
-    {
-      Name        = "opensgf-infra-tflock"
-      Environment = "global"
-      ManagedBy   = "OpenTofu"
-    }
-  )
+  tags = {
+    Name        = "opensgf-infra-tflock"
+    Environment = "global"
+    ManagedBy   = "OpenTofu"
+  }
 }
 
 resource "aws_iam_openid_connect_provider" "github_actions" {
@@ -79,14 +73,11 @@ resource "aws_iam_openid_connect_provider" "github_actions" {
     "sts.amazonaws.com"
   ]
 
-  tags = merge(
-    var.tags,
-    {
-      Name        = "opensgf-github-actions-oidc"
-      Environment = "global"
-      ManagedBy   = "OpenTofu"
-    }
-  )
+  tags = {
+    Name        = "opensgf-github-actions-oidc"
+    Environment = "global"
+    ManagedBy   = "OpenTofu"
+  }
 }
 
 resource "aws_iam_role" "github_actions_terraform" {
@@ -115,14 +106,11 @@ resource "aws_iam_role" "github_actions_terraform" {
     ]
   })
 
-  tags = merge(
-    var.tags,
-    {
-      Name        = "opensgf-github-actions-terraform-role"
-      Environment = "global"
-      ManagedBy   = "OpenTofu"
-    }
-  )
+  tags = {
+    Name        = "opensgf-github-actions-terraform-role"
+    Environment = "global"
+    ManagedBy   = "OpenTofu"
+  }
 }
 
 resource "aws_iam_role_policy" "github_actions_terraform_state" {
