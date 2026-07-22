@@ -13,3 +13,13 @@ output "github_actions_role_arn" {
   value       = aws_iam_role.github_actions_terraform.arn
   sensitive   = true
 }
+
+output "ses_email_identity_arn" {
+  description = "ARN of the SES identity used for outbound email."
+  value       = aws_sesv2_email_identity.opensgf_org.arn
+}
+
+output "ses_mail_from_domain" {
+  description = "Custom MAIL FROM domain used by SES."
+  value       = aws_sesv2_email_identity_mail_from_attributes.opensgf_org.mail_from_domain
+}
