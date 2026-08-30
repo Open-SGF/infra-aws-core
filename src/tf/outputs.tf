@@ -14,6 +14,18 @@ output "github_actions_role_arn" {
   sensitive   = true
 }
 
+output "github_actions_dns_role_arn" {
+  description = "IAM role ARN for infra-dns GitHub Actions."
+  value       = module.github_actions.dns_role_arn
+  sensitive   = true
+}
+
+output "github_actions_gh_role_arn" {
+  description = "IAM role ARN for infra-gh GitHub Actions."
+  value       = module.github_actions.gh_role_arn
+  sensitive   = true
+}
+
 output "ses_email_identity_arn" {
   description = "ARN of the SES identity used for outbound email."
   value       = aws_sesv2_email_identity.opensgf_org.arn
